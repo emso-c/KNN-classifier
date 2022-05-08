@@ -4,7 +4,7 @@ import random
 
 # TODO add feature importance
 
-def parse_csv_data(data:list, label_amount:int=1) -> tuple[list, list]:
+def parse_csv_data(data:list, header=True, label_amount:int=1) -> tuple[list, list]:
     """Parse csv data into X features and y labels.
     
     Args:
@@ -19,7 +19,7 @@ def parse_csv_data(data:list, label_amount:int=1) -> tuple[list, list]:
         raise NotImplementedError("Multiple labels are not supported yet.")
 
     X, y = [], []
-    for row in data[1:]:
+    for row in data[int(header):]:
         X.append([float(x) for x in row[:-label_amount]])
         y.append(row[-label_amount])
     return X, y
