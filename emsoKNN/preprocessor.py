@@ -4,7 +4,7 @@ import random
 
 # TODO add feature importance
 
-def parse_csv_data(data:list, label_amount:int=1) -> tuple(list, list):
+def parse_csv_data(data:list, label_amount:int=1) -> tuple[list, list]:
     """Parse csv data into X features and y labels.
     
     Args:
@@ -88,7 +88,7 @@ def encode_categorical_data(csv_data:list, method:str="integer") -> list:
         encoded_csv_data.append(encoded_row)
     return encoded_csv_data
 
-def split_dataset_random(X:list, y:list, test_ratio:float=0.4, seed=None) -> tuple(list, list, list, list):
+def split_dataset_random(X:list, y:list, test_ratio:float=0.4, seed=None) -> tuple[list, list, list, list]:
     """Split dataset into train and test sets.
 
     Args:
@@ -147,7 +147,7 @@ def split_dataset_homogenous(X, y, test_ratio:float=0.4, seed=None):
         test_labels.append(label_labels[train_size:])
     return train_features, train_labels, test_features, test_labels
 
-def split_dataset(X, y, test_ratio:float=0.4, seed=None, method='homogenous') -> tuple(list, list, list, list):
+def split_dataset(X, y, test_ratio:float=0.4, seed=None, method='homogenous') -> tuple[list, list, list, list]:
     """Split dataset into train and test sets.
     
     Args:

@@ -166,7 +166,7 @@ class KnnManager():
 
         return max(accuracy_scores)
 
-    def find_k_bests(self) -> tuple(list, list):
+    def find_k_bests(self) -> tuple[list, list]:
         """Find the K values with the highest accuracy."""
 
         k_bests, k_best_accuracies = [], []
@@ -179,7 +179,7 @@ class KnnManager():
             k_best_accuracies.append(k_best_accuracy)
         return k_bests, k_best_accuracies
 
-    def find_k_best(self) -> tuple(int, float):
+    def find_k_best(self) -> tuple[int, float]:
         """Find the K value with the highest accuracy."""
 
         k_bests, k_best_accuracies = self.find_k_bests()
