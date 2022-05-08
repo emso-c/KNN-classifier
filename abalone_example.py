@@ -1,0 +1,29 @@
+from emsoKNN.collector import read_csv
+from emsoKNN.preprocessor import encode_categorical_data, parse_csv_data, scale_data
+from emsoKNN.knn_manager import KnnManager
+
+if __name__ == '__main__':
+    csv_data = read_csv('data/abalone/abalone.csv', )
+
+    # preprocess data
+    csv_data = encode_categorical_data(csv_data, method="ord_sum")
+    csv_data = scale_data(csv_data, percentage=.4)
+
+    X, y = parse_csv_data(csv_data, header=False)
+
+    knn_manager = KnnManager()
+    knn_manager.fit(X, y)
+
+    knn_manager.calculate_benchmark_metrics(
+        range(3, 20, 2), benchmark_size=10, test_ratio=.2, split_method="random",
+    )
+
+    print("worst accuracy:", knn_manager.min_accuracy)
+    print("average accuracy:", knn_manager.average_accuracy)
+    print("best accuracy:", knn_manager.max_accuracy)
+    
+    k_best, acc = knn_manager.find_k_best()
+    print(f"{k_best} is the best k value with an accuracy of {acc*100}%")
+    
+    knn_manager.plot_accuracy_scores()
+
