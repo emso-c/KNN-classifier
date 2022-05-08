@@ -70,7 +70,7 @@ class KnnManager():
             ))
         return k_accuracies
 
-    def get_benchmark_metrics(
+    def calculate_benchmark_metrics(
             self, k_range:range, benchmark_size:int, test_ratio:float=.3,
             distance_calculation_method=DistanceCalculator.methods.EUCLIDEAN, split_method="random"
         ) -> list[list[KAccuracy]]:
